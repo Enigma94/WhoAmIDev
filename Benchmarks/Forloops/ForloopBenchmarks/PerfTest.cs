@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
+using ForloopBenchmarks.Models;
 
 namespace ForloopBenchmarks
 {
@@ -7,43 +9,53 @@ namespace ForloopBenchmarks
     {
         [Benchmark]
         [ArgumentsSource(nameof(ProductDataCollection))]
-        public void For_Loop(List<dynamic> objList)
+        public void For_Loop_Mappning(List<dynamic> objList)
         {
+            var product = new List<Product>();
+
             for (int i = 0; i < objList.Count; i++)
             {
-                var val = objList[i];
+                product.Add(new Product
+                {
+                    Id = objList[i].Id,
+                    Article = objList[i].Article
+                });
             }
         }
 
         [Benchmark]
         [ArgumentsSource(nameof(ProductDataCollection))]
-        public void For_Loop_Multi(List<dynamic> objList)
+        public void For_Loop_Variabel(List<dynamic> objList)
         {
             for (int i = 0; i < objList.Count; i++)
             {
-                var id = objList[i].Id;
-                var obj = objList[i].Article;
+                var a = objList[i];
             }
         }
 
         [Benchmark]
         [ArgumentsSource(nameof(ProductDataCollection))]
-        public void ForEach(List<dynamic> objList)
+        public void ForEach_Mappning(List<dynamic> objList)
+        {
+            var product = new List<Product>();
+
+            foreach (var obj in objList)
+            {
+                product.Add(new Product
+                {
+                    Id = obj.Id,
+                    Article = obj.Article
+                });
+            }
+        }
+
+        [Benchmark]
+        [ArgumentsSource(nameof(ProductDataCollection))]
+        public void ForEach_Variabel(List<dynamic> objList)
         {
             foreach (var obj in objList)
             {
-                var val = obj;
-            }
-        }
-
-        [Benchmark]
-        [ArgumentsSource(nameof(ProductDataCollection))]
-        public void ForEach_Multi(List<dynamic> objList)
-        {
-            foreach (var item in objList)
-            {
-                var id = item.Id;
-                var obj = item.Article;
+                var a = obj;
             }
         }
 
