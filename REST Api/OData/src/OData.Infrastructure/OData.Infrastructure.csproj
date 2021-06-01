@@ -12,4 +12,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OData.Application\OData.Application.csproj" />
+    <ProjectReference Include="..\OData.Domain\OData.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

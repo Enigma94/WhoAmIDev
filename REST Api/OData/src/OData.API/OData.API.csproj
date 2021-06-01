@@ -14,4 +14,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OData.Application\OData.Application.csproj" />
+    <ProjectReference Include="..\OData.Domain\OData.Domain.csproj" />
+    <ProjectReference Include="..\OData.Infrastructure\OData.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
